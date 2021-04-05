@@ -9,6 +9,7 @@ Right now, it has got:
 2. More games will be added.
 
 **Note:** *In the future, the webpage may include translations into other languages.*
+
 **Note:** *Currently, a game selector is not available. It will be included in the future.*
 
 <details>
