@@ -12,7 +12,7 @@ Right now, it has got:
 **Note:** *Currently, a game selector is not available. It will be included in the future.*
 
 <details>
-<summary>Project philosophy :thought_balloon:<b></b></summary>
+<summary><b>Project philosophy :thought_balloon:</b></summary>
 
 This project was conceived as a for-fun activity. Thus, commits and advancements on it may not be regular.
 
