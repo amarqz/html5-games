@@ -5,8 +5,19 @@ Right now, it has got:
 
 1. **Tic-Tac-Toe.** :x: :o:
     1. Featuring a simple player versus computer mode. At the moment, the computer follows a random procedure to place in its moves.
-    2. In the future, a player vs. player mode shall be implemented.
+    2. A Player vs. Player (PvP) mode is available. In the future, it will be added a "switch symbols" button.
+2. More games will be added.
 
+**Note:** *In the future, the webpage may include translations into other languages.*
+**Note:** *Currently, a game selector is not available. It will be included in the future.*
+
+<details>
+<summary>Project philosophy :thought_balloon:<b></b></summary>
+
+This project was conceived as a for-fun activity. Thus, commits and advancements on it may not be regular.
+
+This is part of a cross-competence learning initiative.
+</details>
 
 <details>
 <summary><b>Acknowledgements :trophy:</b></summary>
