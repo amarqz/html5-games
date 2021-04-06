@@ -10,9 +10,6 @@ nav {
 	left: 50px;
 
 	z-index: 1;
-
-	-webkit-user-select: none;
-	user-select: none;
 }
 
 #menuToggle a
