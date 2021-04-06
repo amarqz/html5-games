@@ -10,7 +10,7 @@ Right now, it has got:
 
 **New!** A game selector has been added in the form of a navigation menu. It will be enhanced with more options as they're added. It has a *not working* contacts page link, which will be added in the future.
 
-**Note:** *In the future, the webpage may include translations into other languages.*
+**Note:** *In the future, the webpage may include translations into other languages. In the navigation menu a non-functional language selector was added.*
 
 <details>
 <summary><b>Project philosophy :thought_balloon:</b></summary>
