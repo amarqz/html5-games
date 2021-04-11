@@ -40,6 +40,7 @@ const check_limits = () => {
 
 const create_board = () => {
     board_container.innerHTML = "";
+    play_board = [];
 
     for(i=0;i<rows*columns;i++) {
         let div = document.createElement("div");
