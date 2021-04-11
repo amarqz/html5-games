@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#deb887" />
+    <title>h5g | PvP Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../styles/navmenu.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div id="menuToggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+          <li class="sectitle">Tic-Tac-Toe</li>
+          <a href="../index.html"><li class="sub">Player vs. Computer</li></a>
+          <a href="./tttpvp.html"><li class="sub">Player vs. Player (PvP)</li></a>
+          <a href="msw/msw.html"><li>Minesweeper</li></a>
+          <a href="#"><li>Contact</li></a>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 id="title">Minesweeper</h1>
+      <div class="play-area"></div>
+      <div id="winner"><h2 id="whowon"></h2></div>
+      <button onclick="reset_board()">Reset Board</button>
+
+      <div class="gameparams">
+        <div class="param"><input type="text" id="rows" value="10" placeholder="Rows"></div>
+        <div class="param"><h3 id="x">x</h3></div>
+        <div class="param"><input type="text" id="columns" value="10" placeholder="Columns"></div>
+        <div class="param"><h3 id="x">&</h3></div>
+        <div class="param"><input type="text" id="mines" value="10" placeholder="Mines"></div>
+        <div class="nparam">Rows</div>
+        <div></div>
+        <div class="nparam">Columns</div>
+        <div></div>
+        <div class="nparam">Mines</div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
