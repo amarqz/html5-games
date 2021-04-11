@@ -6,7 +6,8 @@ Right now, it has got:
 1. **Tic-Tac-Toe.** :x: :o:
     1. Featuring a simple player versus computer mode. At the moment, the computer follows a random procedure to place in its moves.
     2. A Player vs. Player (PvP) mode is available. In the future, it will be added a "switch symbols" button.
-2. More games will be added.
+2. **(WIP) Minesweeper.** :bomb: :boom: Featuring a size-variable game board and a variable number of mines.
+3. More games will be added.
 
 **New!** A game selector has been added in the form of a navigation menu. It will be enhanced with more options as they're added. It has a *not working* contacts page link, which will be added in the future.
 
