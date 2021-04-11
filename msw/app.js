@@ -1,6 +1,7 @@
-/** Board rendering */
+/** Board creation */
 const board_container = document.querySelector(".play-area");
 let rows, columns, mines;
+let play_board = [];
 
 const reset_board = () => {
     rows = document.getElementById("rows").value;
@@ -8,7 +9,7 @@ const reset_board = () => {
     mines = document.getElementById("mines").value;
 
     if(!check_limits()) {
-        render_board();
+        create_board();
     }
 };
 
@@ -37,18 +38,40 @@ const check_limits = () => {
     return flag;
 };
 
-const render_board = () => {
+const create_board = () => {
     board_container.innerHTML = "";
 
     for(i=0;i<rows*columns;i++) {
         let div = document.createElement("div");
         div.id = `block_${i}`;
         div.className = "block";
-        //div.textContent = `${i}`; // For debugging
+        div.onclick = function (){ a(); };
+        div.oncontextmenu = function (){ b(); return false; };
+        div.textContent = `${i}`; // For debugging
         board_container.appendChild(div);
     }
 
     document.querySelector("html").style.setProperty("--ncol",columns);
+
+    let mines_places = [];
+    let val;
+    for(i=1;i<=mines;i++) {
+        do{
+            val = Math.floor(Math.random() * (rows * columns));
+        }while(mines_places.includes(val));
+        play_board[val] = "B";
+        mines_places.push(val);
+    }
+    
+};
+
+/** Board rendering */
+
+const a = () => {
+    alert('a');
+};
+const b = () => {
+    alert('b');
 };
 
 /** Initial render */
