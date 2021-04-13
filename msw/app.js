@@ -64,6 +64,96 @@ const create_board = () => {
         mines_places.push(val);
     }
     
+    calc_near();
+    test();
+};
+
+const test = () => {
+    for(i=0;i<(rows*columns); i++)
+        document.getElementById(`block_${i}`).innerText = `${play_board[i]}`;
+};
+
+const calc_near = () => {
+    for(i=0;i<rows;i++)
+        for(j=0;j<columns;j++)
+            if(play_board[j+i*columns] != 'B') {
+                let sum = 0;
+                if(j+i*columns == j && j != 0 && j != columns-1) { // Upper row
+                    if(play_board[j+columns*i-1] == "B") sum++;
+                    if(play_board[j+columns*i+1] == "B") sum++;
+                    if(play_board[j+columns*(i+1)-1] == "B") sum++;
+                    if(play_board[j+columns*(i+1)] == "B") sum++;
+                    if(play_board[j+columns*(i+1)+1] == "B") sum++;
+                    play_board[j] = sum;
+                }
+
+                else if(j == 0 && i == 0) { // Upper-left corner
+                    if(play_board[j+columns*i+1] == "B") sum++;
+                    if(play_board[j+columns*(i+1)] == "B") sum++;
+                    if(play_board[j+columns*(i+1)+1] == "B") sum++;
+                    play_board[0] = sum;
+                }
+
+                else if(i == 0 && j == columns-1) { // Upper-right corner
+                    if(play_board[columns-2] == "B") sum++;
+                    if(play_board[2*columns-1] == "B") sum++;
+                    if(play_board[2*columns-2] == "B") sum++;
+                    play_board[columns-1] = sum;
+                }
+
+                else if(j == 0 && i != 0 && i != rows-1) { // Left side column
+                    if(play_board[columns*(i-1)] == "B") sum++;
+                    if(play_board[columns*(i-1)+1] == "B") sum++;
+                    if(play_board[columns*i+1] == "B") sum++;
+                    if(play_board[columns*(i+1)] == "B") sum++;
+                    if(play_board[columns*(i+1)+1] == "B") sum++;
+                    play_board[columns*i] = sum;
+                }
+
+                else if(j == 0 && i == rows-1) { // Down-left corner
+                    if(play_board[columns*(i-1)] == "B") sum++;
+                    if(play_board[columns*(i-1)+1] == "B") sum++;
+                    if(play_board[columns*i+1] == "B") sum++;
+                    play_board[columns*i] = sum;
+                }
+
+                else if(j == columns-1 && i != 0 && i != rows-1) { // Right side column
+                    if(play_board[j+columns*(i-1)] == "B") sum++;
+                    if(play_board[j+columns*(i-1)-1] == "B") sum++;
+                    if(play_board[j+columns*i-1] == "B") sum++;
+                    if(play_board[j+columns*(i+1)] == "B") sum++;
+                    if(play_board[j+columns*(i+1)-1] == "B") sum++;
+                    play_board[j+columns*i] = sum;
+                }
+
+                else if(j == columns-1 && i == rows-1) { //Down-right corner
+                    if(play_board[j+columns*(i-1)] == "B") sum++;
+                    if(play_board[j+columns*(i-1)-1] == "B") sum++;
+                    if(play_board[j+columns*i-1] == "B") sum++;
+                    play_board[j+columns*i] = sum;
+                }
+
+                else if(i == rows-1 && j != 0 && j != columns-1) { // Down row
+                    if(play_board[j+columns*i-1] == "B") sum++;
+                    if(play_board[j+columns*(i-1)-1] == "B") sum++;
+                    if(play_board[j+columns*(i-1)] == "B") sum++;
+                    if(play_board[j+columns*(i-1)+1] == "B") sum++;
+                    if(play_board[j+columns*i+1] == "B") sum++;
+                    play_board[j+columns*i] = sum;
+                }
+
+                else { // Inner block
+                    if(play_board[j+columns*(i-1)-1] == "B") sum++;
+                    if(play_board[j+columns*(i-1)] == "B") sum++;
+                    if(play_board[j+columns*(i-1)+1] == "B") sum++;
+                    if(play_board[j+columns*i-1] == "B") sum++;
+                    if(play_board[j+columns*i+1] == "B") sum++;
+                    if(play_board[j+columns*(i+1)-1] == "B") sum++;
+                    if(play_board[j+columns*(i+1)] == "B") sum++;
+                    if(play_board[j+columns*(i+1)+1] == "B") sum++;
+                    play_board[j+columns*i] = sum;
+                }
+            }
 };
 
 /** Board rendering */
