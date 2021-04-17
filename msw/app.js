@@ -42,6 +42,7 @@ const check_limits = () => {
 const create_board = () => {
     board_container.innerHTML = "";
     play_board = [];
+    document.querySelector('#button').innerText = "Reset Board";
 
     for(i=0;i<rows*columns;i++)
         board_container.innerHTML += `<div id="block_${i}" class="block" onclick="check_block(${i})" oncontextmenu="flag_block(${i}); return false;">`
@@ -172,6 +173,11 @@ const flag_block = w => {
         wblock.innerText = `${flagsym}`;
     else if(wblock.innerText == `${flagsym}`)
         wblock.innerText = "";
+};
+
+/** Input value updates */
+const update_button = () => {
+    document.querySelector('#button').innerText = "Update Board";
 };
 
 /** Initial render */

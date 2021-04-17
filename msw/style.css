@@ -27,6 +27,7 @@ button {
   outline: none;
   border: 1px solid black;
   padding: 10px 20px;
+  min-width: 160px;
   font-size: 1rem;
   font-weight: bold;
   background: none;
