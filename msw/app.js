@@ -1,5 +1,6 @@
 /** Board creation */
 const board_container = document.querySelector(".play-area");
+const flagsym = String.fromCharCode(parseInt(2691,16));
 let rows, columns, mines;
 let play_board = [];
 
@@ -42,15 +43,8 @@ const create_board = () => {
     board_container.innerHTML = "";
     play_board = [];
 
-    for(i=0;i<rows*columns;i++) {
-        let div = document.createElement("div");
-        div.id = `block_${i}`;
-        div.className = "block";
-        div.onclick = function (){ a(); };
-        div.oncontextmenu = function (){ b(); return false; };
-        div.textContent = `${i}`; // For debugging
-        board_container.appendChild(div);
-    }
+    for(i=0;i<rows*columns;i++)
+        board_container.innerHTML += `<div id="block_${i}" class="block" onclick="check_block(${i})" oncontextmenu="flag_block(${i}); return false;">`
 
     document.querySelector("html").style.setProperty("--ncol",columns);
 
@@ -65,7 +59,7 @@ const create_board = () => {
     }
     
     calc_near();
-    test();
+    //test(); // For debugging
 };
 
 const test = () => {
@@ -158,11 +152,26 @@ const calc_near = () => {
 
 /** Board rendering */
 
-const a = () => {
-    alert('a');
+const check_block = w => {
+    let wblock = document.getElementById(`block_${w}`);
+    if(wblock.innerText == "") {
+        wblock.innerText = play_board[w];
+        wblock.classList.add("checked");
+        if(play_board[w] != "B") {
+        }
+        else {
+            // GAMEOVER
+            alert("BOOM!");
+        }
+    }
 };
-const b = () => {
-    alert('b');
+
+const flag_block = w => {
+    let wblock = document.getElementById(`block_${w}`);
+    if(wblock.innerText == "")
+        wblock.innerText = `${flagsym}`;
+    else if(wblock.innerText == `${flagsym}`)
+        wblock.innerText = "";
 };
 
 /** Initial render */

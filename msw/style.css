@@ -54,7 +54,7 @@ button:hover {
   justify-content: center;
   font-size: calc(0.48 * var(--size));
   font-weight: bold;
-  border: var(--line) solid black;
+  border: var(--line) outset #eee3c2;
   transition: background 0.15s ease-in-out;
 }
 
@@ -63,8 +63,9 @@ button:hover {
   background: #deb887;
 }
 
-.occupied:hover {
-  background: #ff3a3a;
+.checked {
+  background: #e6cda5;
+  border: 1px inset #eee3c2;
 }
 
 #title {
