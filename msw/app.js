@@ -159,8 +159,66 @@ const check_block = w => {
     if(wblock.innerText == "") {
         if(!wblock.classList.contains("checked")) {
             wblock.classList.add("checked");
-            if(play_board[w] == 0) {
-                
+            if(play_board[w] == 0 && !wblock.classList.contains("inspected")) {
+                wblock.classList.add("inspected");
+                if(w == 0) { // Upper-left corner
+                    check_block(1);
+                    check_block(columns);
+                    check_block(parseInt(columns,10)+1);
+                }
+                else if(w > 0 && w < parseInt(columns,10)-1) { // Upper row
+                    check_block(w-1);
+                    check_block(w+1);
+                    check_block(w+parseInt(columns,10)-1);
+                    check_block(w+parseInt(columns,10));
+                    check_block(w+parseInt(columns,10)+1);
+                }
+                else if(w == parseInt(columns,10)-1) { // Upper-right corner
+                    check_block(w-1);
+                    check_block(w+parseInt(columns,10)-1);
+                    check_block(w+parseInt(columns,10));
+                }
+                else if(w % columns == 0 && w != (rows*columns)-(parseInt(columns,10)-1) && w != 0) { // Left column
+                    check_block(w-parseInt(columns,10));
+                    check_block(w-parseInt(columns,10)+1);
+                    check_block(w+1);
+                    check_block(w+parseInt(columns,10));
+                    check_block(w+parseInt(columns,10)+1);
+                }
+                else if(w % columns == parseInt(columns,10)-1 && w != (rows*columns)-1 && w != 0) { // Right column
+                    check_block(w-parseInt(columns,10)-1);
+                    check_block(w-parseInt(columns,10));
+                    check_block(w-1);
+                    check_block(w+parseInt(columns,10)-1);
+                    check_block(w+parseInt(columns,10));
+                }
+                else if(w == (rows*columns)-(parseInt(columns,10)-1)) { // Down-left corner
+                    check_block(w-parseInt(columns,10));
+                    check_block(w-parseInt(columns,10)+1);
+                    check_block(w+1);
+                }
+                else if(w > (rows*columns)-(parseInt(columns,10)-1) && w < (rows*columns)) { // Down row
+                    check_block(w-parseInt(columns,10)-1);
+                    check_block(w-parseInt(columns,10));
+                    check_block(w-parseInt(columns,10)+1);
+                    check_block(w-1);
+                    check_block(w+1);
+                }
+                else if(w == (rows*columns)-1) { // Down-right corner
+                    check_block(w-parseInt(columns,10)-1);
+                    check_block(w-parseInt(columns,10));
+                    check_block(w-1);
+                }
+                else { // Inner blocks
+                    check_block(w-parseInt(columns,10)-1);
+                    check_block(w-parseInt(columns,10));
+                    check_block(w-parseInt(columns,10)+1);
+                    check_block(w-1);
+                    check_block(w+1);
+                    check_block(w+parseInt(columns,10)-1);
+                    check_block(w+parseInt(columns,10));
+                    check_block(w+parseInt(columns,10)+1);
+                }
             }
             else if(play_board[w] != "B") {
                 wblock.innerText = play_board[w];
