@@ -79,18 +79,6 @@ button:hover {
   min-height: 50px;
 }
 
-.player {
-  color: blue;
-}
-
-.visitor {
-  color: green;
-}
-
-.draw {
-  color: orangered;
-}
-
 .gameparams {
   margin-top: 30px;
   display: grid;
@@ -121,3 +109,12 @@ input#rows:focus, input#columns:focus, input#mines:focus {
   background-color: #deb887;
   font-weight: bold;
 }
+
+.near1 { color: blue; }
+.near2 { color: green; }
+.near3 { color: red; }
+.near4 { color: purple; }
+.near5 { color: maroon; }
+.near6 { color: turquoise; }
+.near7 { color: black; }
+.near8 { color: gray; }

@@ -1,6 +1,7 @@
 /** Board creation */
 const board_container = document.querySelector(".play-area");
 const flagsym = String.fromCharCode(parseInt(2691,16));
+const bombsym = String.fromCharCode(parseInt(2739,16));
 let rows, columns, mines;
 let play_board = [];
 
@@ -156,13 +157,20 @@ const calc_near = () => {
 const check_block = w => {
     let wblock = document.getElementById(`block_${w}`);
     if(wblock.innerText == "") {
-        wblock.innerText = play_board[w];
-        wblock.classList.add("checked");
-        if(play_board[w] != "B") {
-        }
-        else {
-            // GAMEOVER
-            alert("BOOM!");
+        if(!wblock.classList.contains("checked")) {
+            wblock.classList.add("checked");
+            if(play_board[w] == 0) {
+                
+            }
+            else if(play_board[w] != "B") {
+                wblock.innerText = play_board[w];
+                wblock.classList.add(`near${play_board[w]}`);
+            }
+            else {
+                // GAMEOVER
+                wblock.innerText = bombsym;
+                alert("BOOM!");
+            }
         }
     }
 };
