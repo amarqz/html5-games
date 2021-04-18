@@ -180,26 +180,26 @@ const check_block = w => {
                     check_block(w+parseInt(columns,10)-1);
                     check_block(w+parseInt(columns,10));
                 }
-                else if(w % columns == 0 && w != (rows*columns)-(parseInt(columns,10)-1) && w != 0) { // Left column
+                else if(w % columns == 0 && w != (rows*columns)-parseInt(columns,10) && w != 0) { // Left column
                     check_block(w-parseInt(columns,10));
                     check_block(w-parseInt(columns,10)+1);
                     check_block(w+1);
                     check_block(w+parseInt(columns,10));
                     check_block(w+parseInt(columns,10)+1);
                 }
-                else if(w % columns == parseInt(columns,10)-1 && w != (rows*columns)-1 && w != 0) { // Right column
+                else if(w % columns == parseInt(columns,10)-1 && w != (rows*columns)-1 && w != parseInt(columns,10)-1) { // Right column
                     check_block(w-parseInt(columns,10)-1);
                     check_block(w-parseInt(columns,10));
                     check_block(w-1);
                     check_block(w+parseInt(columns,10)-1);
                     check_block(w+parseInt(columns,10));
                 }
-                else if(w == (rows*columns)-(parseInt(columns,10)-1)) { // Down-left corner
+                else if(w == (rows*columns)-(parseInt(columns,10))) { // Down-left corner
                     check_block(w-parseInt(columns,10));
                     check_block(w-parseInt(columns,10)+1);
                     check_block(w+1);
                 }
-                else if(w > (rows*columns)-(parseInt(columns,10)-1) && w < (rows*columns)) { // Down row
+                else if(w > (rows*columns)-parseInt(columns,10) && w < (rows*columns)-1) { // Down row
                     check_block(w-parseInt(columns,10)-1);
                     check_block(w-parseInt(columns,10));
                     check_block(w-parseInt(columns,10)+1);
