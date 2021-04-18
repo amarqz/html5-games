@@ -4,6 +4,7 @@ const flagsym = String.fromCharCode(parseInt(2691,16));
 const bombsym = String.fromCharCode(parseInt(2739,16));
 let rows, columns, mines;
 let play_board = [];
+let game_over = false;
 
 const reset_board = () => {
     rows = document.getElementById("rows").value;
@@ -44,6 +45,7 @@ const create_board = () => {
     board_container.innerHTML = "";
     play_board = [];
     document.querySelector('#button').innerText = "Reset Board";
+    game_over = false;
 
     for(i=0;i<rows*columns;i++)
         board_container.innerHTML += `<div id="block_${i}" class="block" onclick="check_block(${i})" oncontextmenu="flag_block(${i}); return false;">`
@@ -156,7 +158,7 @@ const calc_near = () => {
 
 const check_block = w => {
     let wblock = document.getElementById(`block_${w}`);
-    if(wblock.innerText == "") {
+    if(wblock.innerText == "" && !game_over) {
         if(!wblock.classList.contains("checked")) {
             wblock.classList.add("checked");
             if(play_board[w] == 0 && !wblock.classList.contains("inspected")) {
@@ -225,8 +227,13 @@ const check_block = w => {
                 wblock.classList.add(`near${play_board[w]}`);
             }
             else {
-                // GAMEOVER
-                wblock.innerText = bombsym;
+                game_over = true;
+                wblock.style.backgroundColor = "red";
+                for(i=0;i<(rows*columns);i++)
+                    if(play_board[i] == "B")
+                        document.getElementById(`block_${i}`).innerText = bombsym;
+
+
                 alert("BOOM!");
             }
         }
@@ -236,8 +243,8 @@ const check_block = w => {
 const flag_block = w => {
     let wblock = document.getElementById(`block_${w}`);
     if(wblock.innerText == "" && !wblock.classList.contains("checked"))
-        wblock.innerText = `${flagsym}`;
-    else if(wblock.innerText == `${flagsym}`)
+        wblock.innerText = flagsym;
+    else if(wblock.innerText == flagsym)
         wblock.innerText = "";
 };
 
