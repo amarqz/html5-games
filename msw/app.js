@@ -233,7 +233,6 @@ const check_block = w => {
                     if(play_board[i] == "B")
                         document.getElementById(`block_${i}`).innerText = bombsym;
 
-
                 alert("BOOM!");
             }
         }
@@ -243,8 +242,18 @@ const check_block = w => {
 const flag_block = w => {
     let wblock = document.getElementById(`block_${w}`);
     if(wblock.innerText == "" && !wblock.classList.contains("checked"))
+    {
         wblock.innerText = flagsym;
-    else if(wblock.innerText == flagsym)
+        let won_game = true;
+        for(i=0;i<(rows*columns);i++)
+            if(play_board[i] == "B" && document.getElementById(`block_${i}`).innerText != flagsym)
+                won_game = false;
+        if(won_game) {
+            game_over = true;
+            alert("Winner, winner, chicken dinner!");
+        }
+    }
+    else if(wblock.innerText == flagsym && !game_over)
         wblock.innerText = "";
 };
 
