@@ -33,6 +33,15 @@ const addPlayerMove = w => {
   }
 };
 
+const keymap = " qweasdzxc";
+window.addEventListener("keydown", function (event) {
+  if(event.defaultPrevented) {
+    return;
+  }
+  if(keymap.indexOf(event.key))
+    addPlayerMove(keymap.indexOf(event.key)-1);
+})
+
 /** Computer not trying to add on full board */
 let board_isfull = false;
 const check_isfull = () => {

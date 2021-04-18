@@ -31,6 +31,18 @@ const addPlayerMove = w => {
   }
 };
 
+const p1_keymap = " qweasdzxc";
+const p2_keymap = " iopklñ,.-";
+window.addEventListener("keydown", function (event) {
+  if(event.defaultPrevented) {
+    return;
+  }
+  if(p1_keymap.indexOf(event.key) && turn == 1)
+    addPlayerMove(p1_keymap.indexOf(event.key)-1);
+  else if(p2_keymap.indexOf(event.key) && turn == 2)
+    addPlayerMove(p2_keymap.indexOf(event.key)-1);
+})
+
 /** Checking if board is full */
 let board_isfull = false;
 const check_isfull = () => {
