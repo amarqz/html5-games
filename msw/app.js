@@ -177,7 +177,7 @@ const check_block = w => {
 
 const flag_block = w => {
     let wblock = document.getElementById(`block_${w}`);
-    if(wblock.innerText == "")
+    if(wblock.innerText == "" && !wblock.classList.contains("checked"))
         wblock.innerText = `${flagsym}`;
     else if(wblock.innerText == `${flagsym}`)
         wblock.innerText = "";
