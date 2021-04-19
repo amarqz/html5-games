@@ -38,9 +38,27 @@ window.addEventListener("keydown", function (event) {
   if(event.defaultPrevented) {
     return;
   }
-  if(keymap.indexOf(event.key))
-    addPlayerMove(keymap.indexOf(event.key)-1);
-})
+  let key = keymap.indexOf(event.key)-1;
+  if(key != -2) {
+    input_error(key);
+    addPlayerMove(key);
+  }
+});
+
+const input_error = w => {
+  let query = "";
+  if(won_game)
+    query = ".play-area";
+  else if(play_board[w] != "")
+    query = `#block_${w}`;
+
+  if(query != "") {
+    document.querySelector(query).classList.add("error");
+    setTimeout(function() { document.querySelector(query).classList.remove("error"); },250);
+    setTimeout(function() { document.querySelector(query).classList.add("error"); },250);
+    setTimeout(function() { document.querySelector(query).classList.remove("error"); },250);
+  }
+};
 
 /** Computer not trying to add on full board */
 let board_isfull = false;

@@ -43,6 +43,7 @@ button:hover {
   width: calc(3 * var(--size));
   height: calc(3 * var(--size));
   grid-template-columns: auto auto auto;
+  transition: background 0.15s ease-in-out;
 }
 
 .block {
@@ -64,6 +65,10 @@ button:hover {
 
 .occupied:hover {
   background: #ff3a3a;
+}
+
+.error {
+  background-color: #ff3a3a;
 }
 
 #block_0, #block_1, #block_2 { border-top: none; }

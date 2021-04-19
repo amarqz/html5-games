@@ -37,12 +37,39 @@ window.addEventListener("keydown", function (event) {
   if(event.defaultPrevented) {
     return;
   }
-  if(p1_keymap.indexOf(event.key) && turn == 1)
-    addPlayerMove(p1_keymap.indexOf(event.key)-1);
-  else if(p2_keymap.indexOf(event.key) && turn == 2)
-    addPlayerMove(p2_keymap.indexOf(event.key)-1);
-})
+  let notturn = false; 
 
+  if(p1_keymap.indexOf(event.key) != -1) {
+    if(turn == 1)
+      addPlayerMove(p1_keymap.indexOf(event.key)-1);
+    else
+      notturn = true;
+    input_error(p1_keymap.indexOf(event.key)-1,notturn);
+  }
+
+  else if(p2_keymap.indexOf(event.key) != -1) {
+    if(turn == 2)
+      addPlayerMove(p2_keymap.indexOf(event.key)-1);
+    else
+      notturn = true;
+    input_error(p2_keymap.indexOf(event.key)-1,notturn);
+  }
+});
+
+const input_error = (w,notturn) => {
+  let query = "";
+  if(won_game || notturn)
+    query = ".play-area";
+  else if(play_board[w] != "")
+    query = `#block_${w}`;
+
+  if(query != "") {
+    document.querySelector(query).classList.add("error");
+    setTimeout(function() { document.querySelector(query).classList.remove("error"); },250);
+    setTimeout(function() { document.querySelector(query).classList.add("error"); },250);
+    setTimeout(function() { document.querySelector(query).classList.remove("error"); },250);
+  }
+};
 /** Checking if board is full */
 let board_isfull = false;
 const check_isfull = () => {
