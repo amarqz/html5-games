@@ -163,6 +163,7 @@ const check_block = w => {
             wblock.classList.add("checked");
             if(play_board[w] == 0 && !wblock.classList.contains("inspected")) {
                 wblock.classList.add("inspected");
+                w = parseInt(w,10);
                 if(w == 0) { // Upper-left corner
                     check_block(1);
                     check_block(columns);
