@@ -247,7 +247,7 @@ const flag_block = w => {
         wblock.innerText = flagsym;
         let won_game = true;
         for(i=0;i<(rows*columns);i++)
-            if(play_board[i] == "B" && document.getElementById(`block_${i}`).innerText != flagsym)
+            if((play_board[i] == "B" && document.getElementById(`block_${i}`).innerText != flagsym) || (play_board[i] != "B" && !document.getElementById(`block_${i}`).classList.contains("checked")))
                 won_game = false;
         if(won_game) {
             game_over = true;
