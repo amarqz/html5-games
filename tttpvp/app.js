@@ -3,6 +3,7 @@ let play_board = ["", "", "", "", "", "", "", "", ""];
 const board_container = document.querySelector(".play-area");
 const player1 = "O";
 const player2 = "X";
+var typing = false;
 
 const render_board = () => {
   board_container.innerHTML = "";
@@ -39,20 +40,22 @@ window.addEventListener("keydown", function (event) {
   }
   let notturn = false; 
 
-  if(p1_keymap.indexOf(event.key) != -1) {
-    if(turn == 1)
-      addPlayerMove(p1_keymap.indexOf(event.key)-1);
-    else
-      notturn = true;
-    input_error(p1_keymap.indexOf(event.key)-1,notturn);
-  }
+  if(!typing) {
+    if(p1_keymap.indexOf(event.key) != -1) {
+      if(turn == 1)
+        addPlayerMove(p1_keymap.indexOf(event.key)-1);
+      else
+        notturn = true;
+      input_error(p1_keymap.indexOf(event.key)-1,notturn);
+    }
 
-  else if(p2_keymap.indexOf(event.key) != -1) {
-    if(turn == 2)
-      addPlayerMove(p2_keymap.indexOf(event.key)-1);
-    else
-      notturn = true;
-    input_error(p2_keymap.indexOf(event.key)-1,notturn);
+    else if(p2_keymap.indexOf(event.key) != -1) {
+      if(turn == 2)
+        addPlayerMove(p2_keymap.indexOf(event.key)-1);
+      else
+        notturn = true;
+      input_error(p2_keymap.indexOf(event.key)-1,notturn);
+    }
   }
 });
 
