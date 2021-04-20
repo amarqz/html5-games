@@ -4,97 +4,132 @@
     --ncol: 10;
   }
   
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    
-    -webkit-user-select: none;
-      user-select: none;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
   
-  .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #f5f5dc;
-  }
-  
-  button {
-    outline: none;
-    border: 1px solid black;
-    padding: 10px 20px;
-    min-width: 160px;
-    font-size: 1rem;
-    font-weight: bold;
-    background: none;
-    transition: all 0.15s ease-in-out;
-  }
-  
-  button:hover {
-    cursor: pointer;
-    background: #deb887;
-    color: black;
-  }
-  
-  .play-area {
-    display: grid;
-    /*width: calc(3 * var(--size));
-    height: calc(3 * var(--size));*/
-    grid-template-columns: repeat(var(--ncol), auto);
-  }
-  
-  .block {
-    display: flex;
-    width: var(--size);
-    height: var(--size);
-    align-items: center;
-    justify-content: center;
-    font-size: calc(0.48 * var(--size));
-    font-weight: bold;
-    border: var(--line) outset #eee3c2;
-  }
-  
-  #title {
-    padding: 30px;
-  }
-  
-  #info {
-    display: inline-block;
-    padding: 10px 0;
-    min-height: 50px;
-  }
-  
-  .gameparams {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-  }
-  
-  .param {
-    margin: 0 10px;
-  }
-  
-  .nparam {
-    text-align: center;
-  }
-  
-  h3#x {
-    padding-top: 5px;
-  }
-  
-  input#rows, input#columns, input#size {
-    padding: 8px 5px;
-    width: 85px;
-    text-align: center;
-    background-color: #f5f5dc;
-    border: 1px solid grey;
-  }
-  
-  input#rows:focus, input#columns:focus, input#size:focus {
-    background-color: #deb887;
-    font-weight: bold;
-  }
+  -webkit-user-select: none;
+    user-select: none;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5dc;
+}
+
+button {
+  outline: none;
+  border: 1px solid black;
+  padding: 10px 20px;
+  min-width: 160px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: none;
+  transition: all 0.15s ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+  background: #deb887;
+  color: black;
+}
+
+.play-area {
+  display: grid;
+  /*width: calc(3 * var(--size));
+  height: calc(3 * var(--size));*/
+  grid-template-columns: repeat(var(--ncol), auto);
+}
+
+.block {
+  display: flex;
+  width: var(--size);
+  height: var(--size);
+  align-items: center;
+  justify-content: center;
+  font-size: calc(0.48 * var(--size));
+  font-weight: bold;
+  border: var(--line) outset #eee3c2;
+}
+
+#title {
+  padding: 30px;
+}
+
+#info {
+  display: inline-block;
+  padding: 10px 0;
+  min-height: 50px;
+}
+
+.gameparams {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.param {
+  margin: 0 10px;
+}
+
+.nparam {
+  text-align: center;
+}
+
+h3#x {
+  padding-top: 5px;
+}
+
+input#rows, input#columns, input#size {
+  padding: 8px 5px;
+  width: 85px;
+  text-align: center;
+  background-color: #f5f5dc;
+  border: 1px solid grey;
+}
+
+input#rows:focus, input#columns:focus, input#size:focus {
+  background-color: #deb887;
+  font-weight: bold;
+}
+
+div.I {
+  background-color: aqua;
+  border: calc(0.2 * var(--size)) outset #73ffff;
+}
+
+div.J {
+  background-color: blue;
+  border: calc(0.2 * var(--size)) outset #5959ff;
+}
+
+div.L {
+  background-color: darkorange;
+  border: calc(0.2 * var(--size)) outset #ffa940;
+}
+
+div.O {
+  background-color: gold;
+  border: calc(0.2 * var(--size)) outset #ffe140;
+}
+
+div.S {
+  background-color: chartreuse;
+  border: calc(0.2 * var(--size)) outset #acff59;
+}
+
+div.T {
+  background-color: mediumorchid;
+  border: calc(0.2 * var(--size)) outset #cb80de;
+}
+
+div.Z {
+  background-color: red;
+  border: calc(0.2 * var(--size)) outset #ff4040;
+}
