@@ -99,6 +99,7 @@ const board_container = document.querySelector(".play-area");
 let rows, columns;
 let play_board = [];
 let ongoing_game = false, moving_piece = false;
+var typing = false;
 
 const reset_board = () => {
     rows = document.getElementById("rows").value;
@@ -173,26 +174,28 @@ window.addEventListener("keydown", function (event) {
 
 /** Game beginning */
 const begin_game = () => {
-    ongoing_game = true;
-    let tdisp = document.getElementById("pinfo");
-    tdisp.innerText = "Ready?";
-    setTimeout(function () { 
-        tdisp.innerText = "3...";
-        tdisp.style.setProperty("color","green");
+    if(!typing) {
+        ongoing_game = true;
+        let tdisp = document.getElementById("pinfo");
+        tdisp.innerText = "Ready?";
         setTimeout(function () { 
-            tdisp.innerText = "2...";
-            tdisp.style.setProperty("color","orange");
-            setTimeout(function () {
-                tdisp.innerText = "1...";
-                tdisp.style.setProperty("color","red");
+            tdisp.innerText = "3...";
+            tdisp.style.setProperty("color","green");
+            setTimeout(function () { 
+                tdisp.innerText = "2...";
+                tdisp.style.setProperty("color","orange");
                 setTimeout(function () {
-                    tdisp.innerText = "";
-                    tdisp.style.setProperty("color","black");
-                    spawn_piece(random_piece());
+                    tdisp.innerText = "1...";
+                    tdisp.style.setProperty("color","red");
+                    setTimeout(function () {
+                        tdisp.innerText = "";
+                        tdisp.style.setProperty("color","black");
+                        spawn_piece(random_piece());
+                    }, 1000);
                 }, 1000);
             }, 1000);
         }, 1000);
-    }, 1000);
+    }
 };
 
 const random_piece = () => {
