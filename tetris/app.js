@@ -209,5 +209,10 @@ const spawn_piece = p => {
     moving_piece = true;
 }
 
+/** Input value updates */
+const update_button = () => {
+    document.querySelector('#button').innerText = "Update Board";
+};
+
 /** Initial render */
 reset_board();
