@@ -3,14 +3,14 @@ This repository is home to a WIP project of a simple webpage containing differen
 
 Right now, it has got:
 
-1. **Tic-Tac-Toe.** :x: :o:
+1. **Tic-Tac-Toe.** :x: :o: **Now**, it can handle both mouse and keyboard input!
     1. Featuring a simple player versus computer mode. At the moment, the computer follows a random procedure to place in its moves.
     2. A Player vs. Player (PvP) mode is available. In the future, it will be added a "switch symbols" button.
 2. **Minesweeper.** :bomb: :boom: Featuring a size-variable game board and a variable number of mines.
 3. **(WIP) Tetris.** 🧱 Keyboard controlled tetris game.
 4. More games will be added.
 
-**New!** A game selector has been added in the form of a navigation menu. It will be enhanced with more options as they're added. It has a *not working* contacts page link, which will be added in the future.
+*Note:* The navigation menu has a *not working* contacts page link, which may be added in the future.
 
 **Note:** *In the future, the webpage may include translations into other languages. In the navigation menu a non-functional language selector was added.*
 

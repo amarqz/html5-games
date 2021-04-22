@@ -236,6 +236,7 @@ const check_block = w => {
 
                 alert("BOOM!");
             }
+            win_check();
         }
     }
 };
@@ -245,18 +246,23 @@ const flag_block = w => {
     if(wblock.innerText == "" && !wblock.classList.contains("checked"))
     {
         wblock.innerText = flagsym;
-        let won_game = true;
-        for(i=0;i<(rows*columns);i++)
-            if((play_board[i] == "B" && document.getElementById(`block_${i}`).innerText != flagsym) || (play_board[i] != "B" && !document.getElementById(`block_${i}`).classList.contains("checked")))
-                won_game = false;
-        if(won_game) {
-            game_over = true;
-            alert("Winner, winner, chicken dinner!");
-        }
+        win_check();
     }
     else if(wblock.innerText == flagsym && !game_over)
         wblock.innerText = "";
 };
+
+/** Win-check */
+const win_check = () => {
+    let won_game = true;
+    for(i=0;i<(rows*columns);i++)
+        if((play_board[i] == "B" && document.getElementById(`block_${i}`).innerText != flagsym) || (play_board[i] != "B" && !document.getElementById(`block_${i}`).classList.contains("checked")))
+            won_game = false;
+    if(won_game) {
+        game_over = true;
+        alert("Winner, winner, chicken dinner!");
+    }
+}
 
 /** Input value updates */
 const update_button = () => {
