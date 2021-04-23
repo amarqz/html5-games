@@ -71,7 +71,18 @@ class piece {
                 this.pos[i] += parseInt(columns,10);
             this.display();
         }
-        // ELSE -> SOLID & SPAWN new piece
+        else
+            this.solid();
+    }
+
+    floor() {
+        this.hide();
+        while(!this.any_wall().includes('D')) {
+            for(i=0;i<this.pos.length;i++)
+                this.pos[i] += parseInt(columns,10);
+        }
+        this.display();
+        this.solid();
     }
 
     rotate() {
@@ -90,6 +101,10 @@ class piece {
         }
 
         return resp;
+    }
+
+    solid() {
+        spawn_piece(random_piece());
     }
 }
 let obj;
@@ -165,7 +180,7 @@ window.addEventListener("keydown", function (event) {
                 alert("Shift");
                 break;
             case "Enter": case " ":
-                alert("Hey");
+                obj.floor();
                 break;
             default:
                 break;
