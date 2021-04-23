@@ -99,6 +99,14 @@ input#rows:focus, input#columns:focus, input#size:focus {
   font-weight: bold;
 }
 
+div.IF { border: calc(0.15 * var(--size)) solid #73ffff}
+div.JF { border: calc(0.15 * var(--size)) solid #5959ff}
+div.LF { border: calc(0.15 * var(--size)) solid #ffa940}
+div.OF { border: calc(0.15 * var(--size)) solid #ffe140}
+div.SF { border: calc(0.15 * var(--size)) solid #acff59}
+div.TF { border: calc(0.15 * var(--size)) solid #cb80de}
+div.ZF { border: calc(0.15 * var(--size)) solid #ff4040}
+
 div.I {
   background-color: aqua;
   border: calc(0.2 * var(--size)) outset #73ffff;

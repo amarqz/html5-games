@@ -1,5 +1,5 @@
 /** Pieces */
-class piece {
+class Piece {
     constructor(type) {
         this.type = type;
         switch(type) {
@@ -35,13 +35,19 @@ class piece {
     }
 
     hide() {
-        for(i=0;i<this.pos.length;i++)
+        let final = this.final();
+        for(i=0;i<this.pos.length;i++) {
             document.querySelector(`#block_${this.pos[i]}`).classList.remove(this.type);
+            document.querySelector(`#block_${final[i]}`).classList.remove(this.type+'F');
+        }
     }
 
     display() {
-        for(i=0;i<this.pos.length;i++)
+        let final = this.final();
+        for(i=0;i<this.pos.length;i++) {
             document.querySelector(`#block_${this.pos[i]}`).classList.add(this.type);
+            document.querySelector(`#block_${final[i]}`).classList.add(this.type+'F');
+        }
     }
 
     move_left() {
@@ -101,9 +107,29 @@ class piece {
         return resp;
     }
 
-    solid() {
+    final() {
+        let finalpos = [];
         for(i=0;i<this.pos.length;i++)
+            finalpos[i] = this.pos[i];
+        let canadvance = true;
+        
+        while(canadvance) {
+            for(i=0;i<finalpos.length;i++)
+                if(finalpos[i] >= (rows*columns)-columns || document.querySelector(`#block_${finalpos[i]+parseInt(columns,10)}`).classList.contains("occupied"))
+                    canadvance = false;
+            if(canadvance)
+                for(i=0;i<finalpos.length;i++)
+                    finalpos[i] += parseInt(columns,10);
+        }
+
+        return finalpos;
+    }
+
+    solid() {
+        for(i=0;i<this.pos.length;i++) {
             document.querySelector(`#block_${this.pos[i]}`).classList.add("occupied");
+            document.querySelector(`#block_${this.pos[i]}`).classList.remove(this.type+'F');
+        }
 
         spawn_piece(random_piece());
     }
@@ -127,7 +153,6 @@ const reset_board = () => {
 };
 
 const check_limits = () => {
-
     let errors = "Error!", flag = false;
     if(rows<5 || rows>40) {
         errors += `\n- The number of desired rows (${rows}) is not between 5 and 40.`;
@@ -220,7 +245,7 @@ const random_piece = () => {
 }
 
 const spawn_piece = p => {
-    obj = new piece(p);
+    obj = new Piece(p);
     obj.display();
     moving_piece = true;
 }
