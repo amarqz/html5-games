@@ -35,15 +35,13 @@ class piece {
     }
 
     hide() {
-        for(i=0;i<this.pos.length;i++) {
+        for(i=0;i<this.pos.length;i++)
             document.querySelector(`#block_${this.pos[i]}`).classList.remove(this.type);
-        }
     }
 
     display() {
-        for(i=0;i<this.pos.length;i++) {
+        for(i=0;i<this.pos.length;i++)
             document.querySelector(`#block_${this.pos[i]}`).classList.add(this.type);
-        }
     }
 
     move_left() {
@@ -92,11 +90,11 @@ class piece {
     any_wall() {
         let resp = "";
         for(i=0;i<this.pos.length;i++) {
-            if(this.pos[i] % columns == 0)
+            if(this.pos[i] % columns == 0 || document.querySelector(`#block_${this.pos[i]-1}`).classList.contains("occupied"))
                 resp += "L";
-            if(this.pos[i] % columns == columns - 1)
+            if(this.pos[i] % columns == columns - 1 || document.querySelector(`#block_${this.pos[i]+1}`).classList.contains("occupied"))
                 resp += "R";
-            if(this.pos[i] >= (rows*columns)-columns)
+            if(this.pos[i] >= (rows*columns)-columns || document.querySelector(`#block_${this.pos[i]+parseInt(columns,10)}`).classList.contains("occupied"))
                 resp += "D";
         }
 
@@ -104,6 +102,9 @@ class piece {
     }
 
     solid() {
+        for(i=0;i<this.pos.length;i++)
+            document.querySelector(`#block_${this.pos[i]}`).classList.add("occupied");
+
         spawn_piece(random_piece());
     }
 }
