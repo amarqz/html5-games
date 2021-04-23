@@ -215,7 +215,7 @@ window.addEventListener("keydown", function (event) {
 
 /** Game beginning */
 const begin_game = () => {
-    if(!typing) {
+    if(!typing && !ongoing_game) {
         ongoing_game = true;
         let tdisp = document.getElementById("pinfo");
         tdisp.innerText = "Ready?";
