@@ -1,5 +1,6 @@
 /** Board creation */
 const board_container = document.querySelector(".play-area");
+const msgs_box = document.querySelector("#msgs");
 const flagsym = String.fromCharCode(parseInt(2691,16));
 const bombsym = String.fromCharCode(parseInt(2739,16));
 let rows, columns, mines;
@@ -43,6 +44,7 @@ const check_limits = () => {
 
 const create_board = () => {
     board_container.innerHTML = "";
+    msgs_box.innerText = "";
     play_board = [];
     document.querySelector('#button').innerText = "Reset Board";
     game_over = false;
@@ -234,7 +236,8 @@ const check_block = w => {
                     if(play_board[i] == "B")
                         document.getElementById(`block_${i}`).innerText = bombsym;
 
-                alert("BOOM!");
+                msgs_box.innerText = "Boom!";
+                msgs_box.style.setProperty("color","red");
             }
             win_check();
         }
@@ -243,7 +246,7 @@ const check_block = w => {
 
 const flag_block = w => {
     let wblock = document.getElementById(`block_${w}`);
-    if(wblock.innerText == "" && !wblock.classList.contains("checked"))
+    if(wblock.innerText == "" && !wblock.classList.contains("checked") && !game_over)
     {
         wblock.innerText = flagsym;
         win_check();
@@ -260,7 +263,8 @@ const win_check = () => {
             won_game = false;
     if(won_game) {
         game_over = true;
-        alert("Winner, winner, chicken dinner!");
+        msgs_box.innerText = "Winner, winner, chicken dinner!";
+        msgs_box.style.setProperty("color", "green");
     }
 }
 
