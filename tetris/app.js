@@ -90,7 +90,66 @@ class Piece {
     }
 
     rotate() {
+        let backup = [];
+        for(i=0;i<this.pos.length;i++)
+            backup[i] = this.pos[i];
 
+        this.hide();
+        if(this.type != 'O') {
+            for(i=0;i<this.pos.length;i++) {
+                if(i != this.pivot)
+                    switch(this.pos[i] - this.pos[this.pivot]) {
+                        case -2*parseInt(columns,10):
+                            this.pos[i] = this.pos[this.pivot]+2;
+                            break;
+                        case -parseInt(columns,10)-1:
+                            this.pos[i] = this.pos[this.pivot]-parseInt(columns,10)+1;
+                            break;
+                        case -parseInt(columns,10)+1:
+                            this.pos[i] = this.pos[this.pivot]+parseInt(columns,10)+1;
+                            break;
+                        case -parseInt(columns,10):
+                            this.pos[i] = this.pos[this.pivot]+1;
+                            break;
+                        case -2:
+                            this.pos[i] = this.pos[this.pivot]-2*columns;
+                            break;
+                        case -1:
+                            if(this.pos[this.pivot]-columns < 0) { // Maybe evaluate outside
+                                this.pos = backup;
+                                this.display();
+                                return;
+                            }
+                            else if(document.querySelector(`#block_${this.pos[this.pivot]-columns}`).classList.contains("occupied")) {
+                                this.pos = backup;
+                                this.display();
+                                return;
+                            }
+                            else
+                                this.pos[i] = this.pos[this.pivot]-columns;
+                            break;
+                        case 1:
+                            this.pos[i] = this.pos[this.pivot]+parseInt(columns,10);
+                            break;
+                        case 2:
+                            this.pos[i] = this.pos[this.pivot]+2*parseInt(columns,10);
+                            break;
+                        case parseInt(columns,10)-1:
+                            this.pos[i] = this.pos[this.pivot]-parseInt(columns,10)-1;
+                            break;
+                        case parseInt(columns,10):
+                            this.pos[i] = this.pos[this.pivot]-1;
+                            break;
+                        case parseInt(columns,10)+1:
+                            this.pos[i] = this.pos[this.pivot]+parseInt(columns,10)-1;
+                            break;
+                        case 2*parseInt(columns,10):
+                            this.pos[i] = this.pos[this.pivot]-2;
+                            break;
+                    }
+            }
+        }
+        this.display();
     }
 
     any_wall() {
