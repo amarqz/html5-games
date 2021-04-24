@@ -115,18 +115,7 @@ class Piece {
                             this.pos[i] = this.pos[this.pivot]-2*columns;
                             break;
                         case -1:
-                            if(this.pos[this.pivot]-columns < 0) { // Maybe evaluate outside
-                                this.pos = backup;
-                                this.display();
-                                return;
-                            }
-                            else if(document.querySelector(`#block_${this.pos[this.pivot]-columns}`).classList.contains("occupied")) {
-                                this.pos = backup;
-                                this.display();
-                                return;
-                            }
-                            else
-                                this.pos[i] = this.pos[this.pivot]-columns;
+                            this.pos[i] = this.pos[this.pivot]-columns;
                             break;
                         case 1:
                             this.pos[i] = this.pos[this.pivot]+parseInt(columns,10);
@@ -146,6 +135,16 @@ class Piece {
                         case 2*parseInt(columns,10):
                             this.pos[i] = this.pos[this.pivot]-2;
                             break;
+                    }
+                    if(this.pos[i] < 0 || this.pos[i] >= (rows*columns)) { 
+                        this.pos = backup;
+                        this.display();
+                        return;
+                    }
+                    else if(document.querySelector(`#block_${this.pos[i]}`).classList.contains("occupied")) {
+                        this.pos = backup;
+                        this.display();
+                        return;
                     }
             }
         }
