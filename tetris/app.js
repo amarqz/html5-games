@@ -308,6 +308,14 @@ const spawn_piece = p => {
     moving_piece = true;
 }
 
+/** Time */
+const timer_level = lvl => {
+    let timer;
+    let time = 1000 - (lvl-1) * 100;
+    timer = setInterval(function () { obj.move_down(); }, time);
+};
+timer_level(1);
+
 /** Input value updates */
 const update_button = () => {
     document.querySelector('#button').innerText = "Update Board";
