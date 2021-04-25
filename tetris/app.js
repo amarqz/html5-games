@@ -32,6 +32,8 @@ class Piece {
                 this.pos = [Math.floor(1/2*columns-2),Math.floor(1/2*columns-1),Math.floor(3/2*columns-1),Math.floor(3/2*columns)];
                 break;
         }
+
+        timer_level(level);
     }
 
     hide() {
@@ -188,7 +190,8 @@ class Piece {
             document.querySelector(`#block_${this.pos[i]}`).classList.add("occupied");
             document.querySelector(`#block_${this.pos[i]}`).classList.remove(this.type+'F');
         }
-
+        
+        check_rows();
         spawn_piece(random_piece());
     }
 }
@@ -200,6 +203,8 @@ let rows, columns;
 let play_board = [];
 let ongoing_game = false, moving_piece = false;
 var typing = false;
+let lines = 0, level = 0;
+let timer;
 
 const reset_board = () => {
     rows = document.getElementById("rows").value;
@@ -232,6 +237,7 @@ const create_board = () => {
     play_board = [];
     document.querySelector('#button').innerText = "Reset Board";
     game_over = false, ongoing_game = false, moving_piece = false;
+    clearInterval(timer);
 
     for(i=0;i<rows*columns;i++)
         board_container.innerHTML += `<div id="block_${i}" class="block">`
@@ -310,11 +316,43 @@ const spawn_piece = p => {
 
 /** Time */
 const timer_level = lvl => {
-    let timer;
+    clearInterval(timer);
     let time = 1000 - (lvl-1) * 100;
     timer = setInterval(function () { obj.move_down(); }, time);
 };
-timer_level(1);
+
+/** Levels and full rows */
+const check_rows = () => {
+    for(i=0;i<rows;i++) {
+        let count = 0;
+        for(j=0;j<columns;j++)
+            if(document.querySelector(`#block_${i*parseInt(columns,10)+j}`).classList.contains("occupied"))
+                count++;
+        if(count == parseInt(columns,10))
+            pop_row(i);
+    }
+
+    if(lines % 10 == 0)
+        set_level(Math.floor(lines/10));
+};
+
+const set_level = lvl => {
+    // Publish the new level and event (to be implemented)
+    level = lvl;
+    timer_level(level);
+};
+
+const pop_row = row => {
+    lines++;
+    document.getElementById("pinfo").innerText = "Lines: " + lines;
+    for(i=0;i<columns;i++)
+        document.querySelector(`#block_${row*parseInt(columns,10)+i}`).classList.remove("occupied",'I','J','L','O','S','T','Z');
+    
+    for(i=row;i>0;i--) 
+        for(j=0;j<columns;j++) {
+            document.querySelector(`#block_${i*parseInt(columns,10)+j}`).classList = document.querySelector(`#block_${(i-1)*parseInt(columns,10)+j}`).classList;
+        }
+};
 
 /** Input value updates */
 const update_button = () => {
