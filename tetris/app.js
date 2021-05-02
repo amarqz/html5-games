@@ -240,7 +240,7 @@ const create_board = () => {
     clearInterval(timer);
 
     for(i=0;i<rows*columns;i++)
-        board_container.innerHTML += `<div id="block_${i}" class="block">`
+        board_container.innerHTML += `<div id="block_${i}" class="block">`;
 
     document.querySelector("html").style.setProperty("--ncol",columns);
 };

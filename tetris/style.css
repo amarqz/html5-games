@@ -34,7 +34,19 @@ button {
   transition: all 0.15s ease-in-out;
 }
 
-button:hover {
+button.mobilebtn {
+  outline: none;
+  border: 1px solid black;
+  padding: 10px 10px;
+  margin: 0 0 6px 12px;
+  min-width: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: none;
+  transition: all 0.15s ease-in-out;
+}
+
+button:hover, button.mobilebtn:hover {
   cursor: pointer;
   background: #deb887;
   color: black;
@@ -140,4 +152,16 @@ div.T {
 div.Z {
   background-color: red;
   border: calc(0.2 * var(--size)) outset #ff4040;
+}
+
+#touchctrls {
+  display: flex;
+  margin-top: 30px;
+  min-width: 80%;
+}
+
+#window {
+  background-color: #f8f8e8;
+  border: 1px inset beige;
+  padding: 50px 42%;
 }

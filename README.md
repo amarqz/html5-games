@@ -29,5 +29,7 @@ In this section, I will mention everyone who collaborated in either way to this 
 
 - The player vs. computer Tic Tac Toe made with HTML, CSS and JS was inspired by a tutorial on [dev.to](https://dev.to/ayushmanbthakur/how-to-make-tic-tac-toe-in-browser-with-html-css-and-js-28ed) written by Ayushman B. 
 - The original version of navigation menu used in the webpage was coded by erikterwan on [codepen.io](https://codepen.io/erikterwan/pen/EVzeRP).
+- The mobile swiper utility was found at [stack overflow](https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android) as an answer proposed by [givanse](https://stackoverflow.com/users/7852/givanse) & slightly modified by [Marwelln](https://stackoverflow.com/users/397195/marwelln).
+- The mobile browser detector was found at [stack overflow](https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser) as an answer proposed by [M. Zaporozhets](https://stackoverflow.com/users/1061967/michael-zaporozhets)
 
 </details>
